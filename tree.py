@@ -1,6 +1,9 @@
 # make a binary tree with the following inpute
 #arr = [1,2,3,4,5,6,7,8,9,10]
 
+from collections import deque
+
+
 class Node():
     def __init__(self, value) -> None:
         self.value = value
@@ -11,24 +14,26 @@ class Tree():
     def __init__(self) :
         self.root = None
     
-    def insert_node(self, value):
-        if not self.root:
-            self.root = Node(value)
-        else:
-            temp = self.root
-            last_node = traverse(temp)
-            print(last_node.value)
-            if not last_node.left:
-                last_node.left = Node(value)
-            elif not last_node.right:
-                last_node.right = Node(value)
     
-    def insert_node(self, root, value):
-        if root:
-            visited.append(root.value)
-            self.insert_node(root.left, value)
-            self.insert_node(root.right, value) 
-        return visited
+    def insert_node(self, value):
+        temp = self.root 
+        node = Node(value)
+        if not temp:
+            self.root = node
+            return
+        else:
+            que = deque([temp])
+            while que:
+                curr = que.popleft()
+                if not curr.left:
+                    curr.left = node
+                    return
+                elif not curr.right:
+                    curr.right = node
+                    return
+                else:
+                    que.append(curr.left if curr.left else curr.right)
+    
 
     def print_tree(self, root, visited):
         if root:
@@ -54,8 +59,8 @@ arr = [1,2,3,4,5,6,7,8,9,10,11]
 for i in arr:
     tree1.insert_node(i)
 
-# tree1.print()
-# print(tree1.print_tree(tree1.root, []))
+tree1.print()
+print(tree1.print_tree(tree1.root, []))
 
 
 
