@@ -1,0 +1,73 @@
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+a = ListNode(-13)
+b = ListNode(-9)
+c = ListNode(9)
+d = ListNode(10)
+e = ListNode(99)
+f = ListNode(100)
+g = ListNode(999)
+h = ListNode(1000)
+i = ListNode(74)
+j = ListNode(243)
+
+a.next = b
+b.next = c
+c.next = i
+i.next = j
+d.next = e
+e.next = f
+f.next = j
+j.next = h
+g.next = h
+h.next = ListNode(2000)
+i = ListNode(2, c)
+
+x = a
+while x != None:
+    print(x.val)
+    x = x.next
+print()
+
+y = d
+while y != None:
+    print(y.val)
+    y = y.next
+print()
+
+z = g
+while z!= None:
+    print(z.val)
+    z = z.next
+print()
+
+w = i
+while w!= None:
+    print(w.val)
+    w = w.next
+
+print(w)
+print(i.val)
+print(i)
+
+"""
+a.next = b
+dummy = ListNode(23)
+dummy.next = a
+summy = ListNode(34)
+pummy = ListNode(19)
+summy.next = dummy
+pummy.next = dummy
+i = pummy
+while i != None:
+    print(i.val)
+    i = i.next
+print()
+j = summy
+while j != None:
+    print(j.val)
+    j = j.next
+"""
